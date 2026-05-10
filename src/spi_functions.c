@@ -147,7 +147,7 @@ static void max30009_int_handler(const struct device *dev,
 
 void interrupt_init(void)
 {
-    if (!gpio_is_ready_dt(&int_gpio)) {  /* was cs_gpio — wrong */
+    if (!gpio_is_ready_dt(&int_gpio)) { 
         printk("INT GPIO not ready\n");
         return;
     }
