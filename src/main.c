@@ -230,6 +230,11 @@ static int show_freq_menu(void)
 {
     while (true) {
         printk("\n");
+        printk("\n\n");
+        printk("================================================\n");
+        printk("  MAX30009 - Bioimpedantsi mootmine\n");
+        printk("  %d voendit konfugratsiooni kohta\n", NUM_SAMPLES);
+        printk("================================================\n\n");
         printk("=== SAGEDUSE VALIK ===\n");
         printk(" 1 - 1 kHz\n");
         printk(" 2 - 50 kHz\n");

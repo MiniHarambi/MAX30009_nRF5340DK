@@ -17,7 +17,7 @@ if ($ports.Count -eq 0) {
 # --- Get descriptions from WMI ---
 $pnp = Get-WmiObject Win32_PnPEntity -Filter "Caption like '%(COM%'" 2>$null
 
-Write-Host "`nAvailable COM ports:`n" -ForegroundColor Cyan
+Write-Host "`nSaadaolevad COM pordid:`n" -ForegroundColor Cyan
 for ($i = 0; $i -lt $ports.Count; $i++) {
     $desc = ($pnp | Where-Object { $_.Caption -match $ports[$i] }).Caption
     if (-not $desc) { $desc = $ports[$i] }
@@ -26,10 +26,10 @@ for ($i = 0; $i -lt $ports.Count; $i++) {
 
 # --- Pick a port ---
 Write-Host ""
-$choice = Read-Host "Select port number (0-$($ports.Count - 1))"
+$choice = Read-Host "Vali pordi number (0-$($ports.Count - 1))"
 
 if ($choice -notmatch '^\d+$' -or [int]$choice -ge $ports.Count) {
-    Write-Host "Invalid choice." -ForegroundColor Red
+    Write-Host "Ebasobiv valik." -ForegroundColor Red
     exit 1
 }
 
@@ -44,7 +44,8 @@ $port.ReadTimeout = 100
 
 try {
     $port.Open()
-    Write-Host "Connected!`n" -ForegroundColor Green
+    Write-Host "Seotud!`n" -ForegroundColor Green
+    Write-Host "Edasi liikumiseks vajuta ENTER`n" -ForegroundColor Yellow
 
     while ($true) {
         if ($port.BytesToRead -gt 0) {
