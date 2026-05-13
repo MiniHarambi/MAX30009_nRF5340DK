@@ -1,0 +1,9 @@
+Võttes kasutusele mõõtelahenduse porototüübi, saab seadme kasutusele
+võtmiseks ühendada see mikro-USB juhtme kaudu arvutiga ja nelja elektroodiga
+mõõdetava objektiga. Järgnevalt saab, kas ise avada VCOM pordi või projekti
+failidest "connect.ps1" ja käivatada see Windows PowerShellis. Valides VCOM1
+saabki hakata mõõtelahendust kasutama.
+
+Kui soovida ise mõõtelahendust korrata, siis püsivara ehitamiseks ja
+nRF5340DK arendusplaadile edastamiseks saab kasutada "nRF Connect for VS Code"
+õpetust või  Nordic DevAcademy "nRF Connect SDK Fundamentals" veebikursust.
