@@ -138,15 +138,22 @@ static int run_config(int cfg_id)
         int z_f  = (int)((z - z_i) * 100);
         if (z_f < 0) z_f = -z_f;
 
+        /* Z_corr nii, nagu faasiga allpool tehtud*/
+        int zc_neg = (z_corr < 0) ? 1 : 0;
+        double zc_abs = zc_neg ? -z_corr : z_corr;
+        int zc_i  = (int)zc_abs;
+        int zc_f  = (int)((zc_abs - zc_i) * 100);
+
+        /*eemalda märk; absoluut värätus; täis ja murdosa eraldi*/
         int p_neg = (phase < 0) ? 1 : 0;
         double p_abs = p_neg ? -phase : phase;
         int p_i  = (int)p_abs;
         int p_f  = (int)((p_abs - p_i) * 100);
 
-        printk("%d\t%d\t%d\t%d\t%d\t%d.%02d\t%s%d.%02d\t%s\t%s\t%d\t%d\t%d\n",
+        printk("%d\t%d\t%d\t%d\t%d.%02d\t%s%d.%02d\t%s%d.%02d\t%s\t%s\t%d\t%d\t%d\n",
                j + 1, si[j], sq[j], (int)mag,
                z_i, z_f,
-               z_corr,
+               zc_neg ? "-" : "", zc_i, zc_f,
                p_neg ? "-" : "", p_i, p_f,
                cfg->label,
                flabel,
